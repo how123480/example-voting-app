@@ -1,3 +1,4 @@
 Flask
 Redis
 gunicorn
+requests==2.24.0
