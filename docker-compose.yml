@@ -29,7 +29,7 @@ services:
       context: ./worker
     depends_on:
       - "redis"
-      - "db"
+        #      - "db"
     networks:
       - back-tier
 
@@ -40,19 +40,19 @@ services:
     networks:
       - back-tier
 
-  db:
-    image: postgres:9.4
-    container_name: db
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-    volumes:
-      - "db-data:/var/lib/postgresql/data"
-    networks:
-      - back-tier
+        #  db:
+        #    image: postgres:9.4
+        #    container_name: db
+        #    environment:
+        #      POSTGRES_USER: "postgres"
+        #      POSTGRES_PASSWORD: "postgres"
+        #    volumes:
+        #      - "db-data:/var/lib/postgresql/data"
+        #    networks:
+        #      - back-tier
 
-volumes:
-  db-data:
+        #volumes:
+        #  db-data:
 
 networks:
   front-tier:

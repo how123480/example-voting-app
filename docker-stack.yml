@@ -12,18 +12,20 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
-  db:
-    image: postgres:9.4
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - backend
-    deploy:
-      placement:
-        constraints: [node.role == manager]
+
+        #db:
+        #    image: postgres:9.4
+        #    environment:
+        #      POSTGRES_USER: "postgres"
+        #      POSTGRES_PASSWORD: "postgres"
+        #    volumes:
+        #      - db-data:/var/lib/postgresql/data
+        #    networks:
+        #      - backend
+        #    deploy#:
+        #      placement:
+        #        constraints: [node.role == manager]
+        #
   vote:
     image: dockersamples/examplevotingapp_vote:before
     ports:
@@ -44,8 +46,8 @@ services:
       - 5001:80
     networks:
       - backend
-    depends_on:
-      - db
+        #    depends_on:
+        #      - db
     deploy:
       replicas: 1
       update_config:
@@ -60,7 +62,7 @@ services:
       - frontend
       - backend
     depends_on:
-      - db
+        #      - db
       - redis
     deploy:
       mode: replicated

@@ -9,7 +9,7 @@ class Worker {
   public static void main(String[] args) {
     try {
       Jedis redis = connectToRedis("redis");
-      Connection dbConn = connectToDB("db");
+      Connection dbConn = connectToDB("35.224.82.130:5432");
 
       System.err.println("Watching vote queue");
 
@@ -72,7 +72,7 @@ class Worker {
 
       while (conn == null) {
         try {
-          conn = DriverManager.getConnection(url, "postgres", "postgres");
+          conn = DriverManager.getConnection(url, "postgres", "r08921a07");
         } catch (SQLException e) {
           System.err.println("Waiting for db");
           sleep(1000);
